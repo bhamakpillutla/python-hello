@@ -1,3 +1,16 @@
+from flask import Flask, jsonify
+import time
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello():
+    return "Hi", 200
+
+if __name__=='__main__':
+    app.run(debug=True,host='0.0.0.0', port = 5050)
+
+
 # from wsgiref.simple_server import make_server
 # from pyramid.config import Configurator
 # from pyramid.response import Response
@@ -18,15 +31,3 @@
 #         app = config.make_wsgi_app()
 #     server = make_server('0.0.0.0', port, app)
 #     server.serve_forever()
-
-from flask import Flask, jsonify
-import time
-
-app = Flask(__name__)
-
-@app.route('/')
-def hello():
-    return 200
-
-if __name__=='__main__':
-    app.run(debug=True,host='0.0.0.0', port = 5050)
