@@ -14,6 +14,7 @@
 from wsgiref.simple_server import make_server
 from pyramid.config import Configurator
 from pyramid.response import Response
+import logging
 import os
 
 def hello_world(request):
@@ -22,9 +23,11 @@ def hello_world(request):
         name = "world"
     # message = "Welcome to AWS - , " + name + "!\n"
     message = "This is a sample log statement that exceeds 200 bytes"
+    logging.info(message)
     return Response(message)
 
 if __name__ == '__main__':
+    logging.basicConfig(level=logging.INFO)
     port = int(os.environ.get("PORT"))
     with Configurator() as config:
         config.add_route('hello', '/')
